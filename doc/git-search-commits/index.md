@@ -6,10 +6,10 @@ Git alias:
 
 ```git
 search-commits = !"f() { \
-    query=\"$1\"; \
-    shift; \
-    git log -S\"$query\" \"$@\"; \
-}; f \"$@\""
+     query=\"$1\"; \
+     shift; \
+     git log --grep=\"$query\" \"$@\"; \
+}; f"
 ```
 
 Example:
@@ -22,6 +22,12 @@ Example: search for any commit that adds or removes string "foobar":
 
 ```shell
 git search-commits foobar
+```
+
+Example: search for any commit that adds or removes string "foo bar":
+
+```shell
+git search-commits "foo bar"
 ```
 
 Example: search commits for string "foobar" in directory "src/lib":
